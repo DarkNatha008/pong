@@ -1,0 +1,50 @@
+body{
+    background-color: black;
+}
+h1{
+    color: white;
+    text-align: center;
+}
+p{
+    color: white;
+    text-align: center;
+}
+canvas{
+    border: solid;
+    border-color: rgb(114, 116, 236);
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+.nouvelle_partie{
+  
+    right:0;
+    left: 0;
+    margin:auto;
+    width: 150px;
+    
+}
+.score{
+    right:0;
+    left: 0;
+    margin:auto;
+    
+}
+.bouton_direction{
+    right:0;
+    left: 0;
+    margin:auto;
+    width: 70px;
+}
+
+.conteneur{
+    position: absolute;
+    bottom: 50px;
+    right:0;
+    left: 0;
+    margin:auto;
+    width: 150px;
+}
