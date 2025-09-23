@@ -27,8 +27,9 @@ function lancer(){
 
 ctx.fillStyle = '#ffffffff';
 ctx.fillRect(150, 550, 100, 10);
-ctx.fillStyle('#2fb951ff')
-
+ctx.fillStyle = 'rgba(73, 209, 250, 1)';
+ctx.arc(200,535,15,0,2*Math.PI)
+ctx.fill();
 
 lancer();
 document.getElementById("nouvelle_partie").onclick = lancer();
