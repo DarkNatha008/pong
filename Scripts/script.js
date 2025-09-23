@@ -1,4 +1,6 @@
-document.getElementById("nouvelle_partie").onclick = lancer();
+
+let canvas = document.getElementById('jeu')
+let ctx = canvas.getContext('2d')
 
 let score = 0;
 
@@ -20,7 +22,16 @@ function lancer(){
     
 
 }
+
+/*création de la raquette*/ 
+
+ctx.fillStyle = '#ffffffff';
+ctx.fillRect(150, 550, 100, 10);
+ctx.fillStyle('#2fb951ff')
+
+
 lancer();
+document.getElementById("nouvelle_partie").onclick = lancer();
 
 
 
