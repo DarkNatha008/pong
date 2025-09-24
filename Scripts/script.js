@@ -69,6 +69,6 @@ function updateFrame(){
 }
 
 function updateGame(){
-    ball_x++
-    ball_y--
+    ball_x=ball_x+Math.sin(orientation_)*vitesse
+    ball_y=ball_y+Math.cos(orientation_)*vitesse
 }
