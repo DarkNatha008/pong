@@ -13,6 +13,7 @@ let orientation_
 let ball_x = 200
 let ball_y = 535
 let vitesse = 1
+let taille = 15
 
 const timer = setInterval(() =>{
     if(état=="en cours"){
@@ -44,7 +45,7 @@ document.getElementById("nouvelle_partie").onclick = function lancer(){
 ctx.fillStyle = '#ffffffff';
 ctx.fillRect(150, 550, 100, 10);
 ctx.fillStyle = 'rgba(73, 209, 250, 1)';
-ctx.arc(ball_x,ball_y,15,0,2*Math.PI)
+ctx.arc(ball_x,ball_y,taille,0,2*Math.PI)
 ctx.fill();
 
 
@@ -63,12 +64,25 @@ function updateFrame(){
     ctx.fillRect(150, 550, 100, 10);
     ctx.fillStyle = 'rgba(73, 209, 250, 1)';
     ctx.beginPath()
-    ctx.arc(ball_x,ball_y,15,0,2*Math.PI)
+    ctx.arc(ball_x,ball_y,taille,0,2*Math.PI)
     ctx.fill();
-    console.log(canvas.width)
 }
 
 function updateGame(){
-    ball_x=ball_x+Math.sin(orientation_)*vitesse
-    ball_y=ball_y+Math.cos(orientation_)*vitesse
+    ball_x=ball_x+Math.sin(((Math.PI*2)/360)*orientation_)*vitesse
+    ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*vitesse
+    if(ball_x+taille>canvas.clientWidth){
+        orientation_=-orientation_
+    }
+    if(ball_x-taille<0){
+        orientation_=-orientation_
+    }
+    if(ball_y-taille<0){
+        orientation_=180-orientation_
+    }
+    if(ball_y+taille>canvas.clientHeight){
+        orientation_=180-orientation_
+    }
+    console.log(orientation_)
 }
+
