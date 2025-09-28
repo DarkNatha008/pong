@@ -11,7 +11,10 @@ let raquetteX = 150;
 let tailleX_raquette = (25/100)*canvas.width
 let tailleY_raquette = (2/100)*canvas.width
 
-let frame_dernier_rebond_raquette = 10
+let right_down = false
+let left_down = false
+
+let frame_dernier_rebond_raquette = 30
 
 //balle
 let orientation_
@@ -88,6 +91,7 @@ function ball(){
 function boucle(){
     cancelAnimationFrame(frame_requester);
     updateGame();
+    update_raquette();
     updateFrame();
     frame_requester=requestAnimationFrame(boucle);
 }
@@ -118,7 +122,7 @@ function updateGame(){
     }
     if(ball_y+taille_ball>(140/100)*canvas.width && ball_y-taille_ball<(140/100)*canvas.width+tailleY_raquette
         && ball_x+taille_ball>raquetteX && ball_x-taille_ball<raquetteX+tailleX_raquette
-        && frame_dernier_rebond_raquette>=10
+        && frame_dernier_rebond_raquette>=30
     ){
         orientation_=180-orientation_
         augmenter_vitesse()
@@ -147,33 +151,51 @@ ball();
 document.addEventListener("keydown", (e)=>{
     switch (e.key){
         case "ArrowLeft":
-            if(raquetteX>0) raquetteX -= 20;
+            left_down=true
             break;
         case "ArrowRight":
-            if(raquetteX +(25/100)*canvas.width < canvas.width) raquetteX += 20;
+            right_down=true
             break;
         default:
             break;
     }
-    raquette();
-    ball();
 })
+
+document.addEventListener("keyup", (e)=>{
+    switch (e.key){
+        case "ArrowLeft":
+            left_down=false
+            break;
+        case "ArrowRight":
+            right_down=false
+            break;
+        default:
+            break;
+    }
+})
+
+function update_raquette(){
+    if(left_down==true && raquetteX>0)raquetteX -= 10
+    if(right_down==true && raquetteX+(25/100)*canvas.width < canvas.width)raquetteX += 10
+
+}
+
 /* utilise le bouton gauche pour déplacer la raquette */
 
-gauche.addEventListener("click", ()=>{
-    
-            if(raquetteX>0) raquetteX -= 20;
-    raquette();
-    ball(); 
+gauche.addEventListener("mousedown", ()=>{
+    left_down=true
+})
+gauche.addEventListener("mouseup", ()=>{
+    left_down=false
 })
 
 /* utilise le bouton droit pour déplacer la raquette */
 
-droit.addEventListener("click", ()=>{
-    if(raquetteX +(25/100)*canvas.width < canvas.width) raquetteX += 20;
-    raquette();
-    ball(); 
+droit.addEventListener("mousedown", ()=>{
+    right_down=true
 })
-
+droit.addEventListener("mouseup", ()=>{
+    right_down=false
+})
 
 /*------- fin du programme -------*/
