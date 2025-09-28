@@ -11,16 +11,21 @@ let raquetteX = 150;
 let tailleX_raquette = (25/100)*canvas.width
 let tailleY_raquette = (2/100)*canvas.width
 
+let frame_dernier_rebond_raquette = 10
+
 //balle
 let orientation_
 let ball_x = 200
 let ball_y = 535
-let vitesse = 1
+let vitesse_initiale = 10
+let vitesse_max = vitesse_initiale * 5
+let vitesse = vitesse_initiale
 let taille_ball = 15
 //jeu
 let frame_requester;
 let score = 0;
 let état = "stop";
+let perdu = false;
 
 
 
@@ -41,7 +46,9 @@ const timer = setInterval(() =>{
 document.getElementById("nouvelle_partie").onclick = function lancer(){
     score=0;
 
+    vitesse=vitesse_initiale
     état="en cours";
+    perdu=false;
     raquetteX = canvas.width/2 - (12.5/100)*canvas.width;
     ball_x=200;
     ball_y=535;
@@ -86,6 +93,7 @@ function boucle(){
 }
 
 function updateFrame(){
+    frame_dernier_rebond_raquette++
     raquette();
     ctx.fillStyle = 'rgba(73, 209, 250, 1)';
     ctx.beginPath();
@@ -98,20 +106,32 @@ function updateGame(){
     ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*vitesse
     if(ball_x+taille_ball>canvas.clientWidth){
         orientation_=-orientation_
+        augmenter_vitesse()
     }
     if(ball_x-taille_ball<0){
         orientation_=-orientation_
+        augmenter_vitesse()
     }
     if(ball_y-taille_ball<0){
         orientation_=180-orientation_
+        augmenter_vitesse()
     }
-    if(ball_y+taille_ball>(140/100)*canvas.width && ball_y+taille_ball<(140/100)*canvas.width+tailleY_raquette
-        && ball_x-taille_ball>raquetteX && ball_x+taille_ball<raquetteX+tailleX_raquette
+    if(ball_y+taille_ball>(140/100)*canvas.width && ball_y-taille_ball<(140/100)*canvas.width+tailleY_raquette
+        && ball_x+taille_ball>raquetteX && ball_x-taille_ball<raquetteX+tailleX_raquette
+        && frame_dernier_rebond_raquette>=10
     ){
         orientation_=180-orientation_
+        augmenter_vitesse()
+        frame_dernier_rebond_raquette=0
     }
 }
 
+/* augmentez la vitesse de la balle jusqu'à 5 fois la vitesse initiale */
+function augmenter_vitesse(){
+    if(vitesse<vitesse_max){
+        vitesse+=0.1
+    }
+}
 
 /*------- fin de Déclaration de fonction -------*/
 
@@ -154,4 +174,6 @@ droit.addEventListener("click", ()=>{
     raquette();
     ball(); 
 })
+
+
 /*------- fin du programme -------*/
