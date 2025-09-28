@@ -17,7 +17,7 @@ let frame_dernier_rebond_raquette = 10
 let orientation_
 let ball_x = 200
 let ball_y = 535
-let vitesse_initiale = 10
+let vitesse_initiale = 1
 let vitesse_max = vitesse_initiale * 5
 let vitesse = vitesse_initiale
 let taille_ball = 15
