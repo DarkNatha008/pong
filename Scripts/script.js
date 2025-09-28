@@ -9,16 +9,17 @@ let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth -400;
 canvas.height = window.innerHeight -300 ;
 
+
 // raquette
 let gauche = document.getElementById('gauche');
 let droit = document.getElementById('droit');
-let raquetteX = canvas.width/2 ;
+let raquetteX = canvas.width/2 -10/100*canvas.width  ;
 //balle
 let orientation_
 let ball_x = canvas.width/2 -10/100*canvas.width
 let ball_y = canvas.height*85/100
 let vitesse = 1
-let taille = 15
+let taille = canvas.height *5/100
 //jeu
 let frame_requester;
 let score = 0;
@@ -53,7 +54,7 @@ document.getElementById("nouvelle_partie").onclick = function lancer(){
     boucle();
 }
 
-/*fonction pour réadapter la taille du canvas*/
+
 
 
 
@@ -74,7 +75,7 @@ ctx.fill();
 
 function ball(){
     ctx.fillStyle = 'rgba(73, 209, 250, 1)';
-    ctx.arc(ball_x,ball_y,15,0,2*Math.PI);
+    ctx.arc(ball_x,ball_y,canvas.height *5/100,0,2*Math.PI);
     ctx.fill();
 }
 
@@ -89,7 +90,7 @@ function updateFrame(){
     raquette();
     ctx.fillStyle = 'rgba(73, 209, 250, 1)';
     ctx.beginPath();
-    ctx.arc(ball_x,ball_y,15,0,2*Math.PI);
+    ctx.arc(ball_x,ball_y,canvas.height *5/100,0,2*Math.PI);
     ctx.fill();
 }
 
@@ -115,7 +116,6 @@ function updateGame(){
 
 
 /*------- Début du programme -------*/
-
 
 
 raquette();
@@ -159,5 +159,6 @@ window.addEventListener('resize', ()=>{
     canvas.width = window.innerWidth -400;
     canvas.height = window.innerHeight -300 ;
     raquette();
+    ball();
 })
 /*------- fin du programme -------*/
