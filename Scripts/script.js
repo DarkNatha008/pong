@@ -1,17 +1,22 @@
 
 /*------- Déclaration de variable -------*/
 
+
 //canvas
 let canvas = document.getElementById('jeu');
 let ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth -400;
+canvas.height = window.innerHeight -300 ;
+
 // raquette
 let gauche = document.getElementById('gauche');
 let droit = document.getElementById('droit');
-let raquetteX = 150;
+let raquetteX = canvas.width/2 ;
 //balle
 let orientation_
-let ball_x = 200
-let ball_y = 535
+let ball_x = canvas.width/2 -10/100*canvas.width
+let ball_y = canvas.height*85/100
 let vitesse = 1
 let taille = 15
 //jeu
@@ -39,28 +44,26 @@ document.getElementById("nouvelle_partie").onclick = function lancer(){
     score=0;
 
     état="en cours";
-    raquetteX = canvas.width/2 - (12.5/100)*canvas.width;
-    ball_x=200;
-    ball_y=535;
+    raquetteX = canvas.width/2 - (10/100)*canvas.width;
+    ball_x= canvas.width/2;
+    ball_y=canvas.height*85/100;
 
     orientation_ = Math.random()*360;
 
     boucle();
 }
 
+/*fonction pour réadapter la taille du canvas*/
+
+
 
 /*création de la raquette*/
-
-
-ctx.fillStyle = '#ffffffff';
-ctx.fillRect(150, 550, 100, 10);
-
 
 function raquette(){
     
     ctx.clearRect(0, 0, canvas.width, canvas.height); 
     ctx.fillStyle = '#ffffffff';
-    ctx.fillRect(raquetteX, (140/100)*canvas.width, (25/100)*canvas.width, (2/100)*canvas.width);
+    ctx.fillRect(raquetteX, (90/100)*canvas.height, (20/100)*canvas.width, (2/100)*canvas.height);
 }
 
 /*création de la ball*/
@@ -113,6 +116,8 @@ function updateGame(){
 
 /*------- Début du programme -------*/
 
+
+
 raquette();
 
 ball();
@@ -125,7 +130,7 @@ document.addEventListener("keydown", (e)=>{
             if(raquetteX>0) raquetteX -= 20;
             break;
         case "ArrowRight":
-            if(raquetteX +(25/100)*canvas.width < canvas.width) raquetteX += 20;
+            if(raquetteX +(20/100)*canvas.width < canvas.width) raquetteX += 20;
             break;
         default:
             break;
@@ -145,8 +150,14 @@ gauche.addEventListener("click", ()=>{
 /* utilise le bouton droit pour déplacer la raquette */
 
 droit.addEventListener("click", ()=>{
-    if(raquetteX +(25/100)*canvas.width < canvas.width) raquetteX += 20;
+    if(raquetteX +(20/100)*canvas.width < canvas.width) raquetteX += 20;
     raquette();
     ball(); 
+})
+
+window.addEventListener('resize', ()=>{
+    canvas.width = window.innerWidth -400;
+    canvas.height = window.innerHeight -300 ;
+    raquette();
 })
 /*------- fin du programme -------*/
