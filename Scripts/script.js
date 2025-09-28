@@ -9,17 +9,19 @@ let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth -400;
 canvas.height = window.innerHeight -300 ;
 
-
 // raquette
 let gauche = document.getElementById('gauche');
 let droit = document.getElementById('droit');
-let raquetteX = canvas.width/2 -10/100*canvas.width  ;
+let raquetteX = canvas.width/2 -10/100*canvas.width ;
+let raquetteY = canvas.height*90/100
+let epaisseurRaquette = (2/100)*canvas.height;
+let longueurRaquette = (20/100)*canvas.width;
 //balle
 let orientation_
-let ball_x = canvas.width/2 -10/100*canvas.width
-let ball_y = canvas.height*85/100
+let ball_x = canvas.width/2
+let ball_y = canvas.height*80/100
 let vitesse = 1
-let taille = canvas.height *5/100
+let taille = canvas.height *2/100 +2/100*canvas.width
 //jeu
 let frame_requester;
 let score = 0;
@@ -64,18 +66,16 @@ function raquette(){
     
     ctx.clearRect(0, 0, canvas.width, canvas.height); 
     ctx.fillStyle = '#ffffffff';
-    ctx.fillRect(raquetteX, (90/100)*canvas.height, (20/100)*canvas.width, (2/100)*canvas.height);
+    ctx.fillRect(raquetteX, raquetteY, (20/100)*canvas.width, (2/100)*canvas.height);
 }
 
 /*création de la ball*/
 
-ctx.fillStyle = 'rgba(73, 209, 250, 1)';
-ctx.arc(ball_x,ball_y,taille,0,2*Math.PI)
-ctx.fill();
+
 
 function ball(){
     ctx.fillStyle = 'rgba(73, 209, 250, 1)';
-    ctx.arc(ball_x,ball_y,canvas.height *5/100,0,2*Math.PI);
+    ctx.arc(ball_x,ball_y,taille,0,2*Math.PI);
     ctx.fill();
 }
 
@@ -90,7 +90,7 @@ function updateFrame(){
     raquette();
     ctx.fillStyle = 'rgba(73, 209, 250, 1)';
     ctx.beginPath();
-    ctx.arc(ball_x,ball_y,canvas.height *5/100,0,2*Math.PI);
+    ctx.arc(ball_x,ball_y,taille,0,2*Math.PI);
     ctx.fill();
 }
 
@@ -99,14 +99,19 @@ function updateGame(){
     ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*vitesse
     if(ball_x+taille>canvas.clientWidth){
         orientation_=-orientation_
+        
     }
-    if(ball_x-taille<0){
+    else if(ball_x-taille<0){
         orientation_=-orientation_
     }
-    if(ball_y-taille<0){
+   else if(ball_y-taille<0){
         orientation_=180-orientation_
     }
-    if(ball_y+taille>canvas.clientHeight){
+    else if(ball_y+taille>canvas.clientHeight){
+        orientation_=180-orientation_
+        
+    }
+    else if((ball_x -1/2*taille < raquetteX  +longueurRaquette ) && (ball_x +1/2*taille > raquetteX) && (ball_y +taille >= raquetteY  )){
         orientation_=180-orientation_
     }
 }
@@ -158,7 +163,8 @@ droit.addEventListener("click", ()=>{
 window.addEventListener('resize', ()=>{
     canvas.width = window.innerWidth -400;
     canvas.height = window.innerHeight -300 ;
-    raquette();
-    ball();
+    location.reload();
+    
 })
+
 /*------- fin du programme -------*/
