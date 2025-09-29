@@ -1,5 +1,5 @@
 /*--------- OS -----------*/
-if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+if(1){
     let bouton_gauche = document.getElementById("gauche")
     let bouton_droit = document.getElementById("droit")
     bouton_gauche.style.transform = "scale(3)";
