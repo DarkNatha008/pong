@@ -134,8 +134,8 @@ function updateFrame(){
 }
 
 function updateGame(){
-    ball_x=ball_x+Math.sin(((Math.PI*2)/360)*orientation_)*vitesse
-    ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*vitesse
+    ball_x=ball_x+Math.sin(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.width/400)
+    ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/300)
     if(ball_x+taille_ball>canvas.clientWidth){
         orientation_=-orientation_
         augmenter_vitesse()
