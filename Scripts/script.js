@@ -27,16 +27,16 @@ let vitesse_max = vitesse_initiale * 5
 let vitesse = vitesse_initiale
 
 
-let raquetteX = canvas.width/2 -10/100*canvas.width ;
+let raquetteX = canvas.width/2 -5/100*canvas.width ;
 let raquetteY = canvas.height*90/100
 let epaisseurRaquette = (2/100)*canvas.height;
-let longueurRaquette = (20/100)*canvas.width;
+let longueurRaquette = (10/100)*canvas.width;
 //balle
 
 let ball_x = canvas.width/2
 let ball_y = canvas.height*80/100
 
-let taille_ball = canvas.height *2/100 +2/100*canvas.width
+let taille_ball = canvas.width *1/100
 
 //jeu
 let frame_requester;
@@ -67,7 +67,7 @@ document.getElementById("nouvelle_partie").onclick = function lancer(){
     état="en cours";
 
     perdu=false;
-    raquetteX = canvas.width/2 - (10/100)*canvas.width;
+    raquetteX = canvas.width/2 - (5/100)*canvas.width;
     ball_x= canvas.width/2;
     ball_y=canvas.height*85/100;
 
@@ -89,7 +89,7 @@ function raquette(){
     
     ctx.clearRect(0, 0, canvas.width, canvas.height); 
     ctx.fillStyle = '#ffffffff';
-     ctx.fillRect(raquetteX, raquetteY, longueurRaquette, epaisseurRaquette);
+    ctx.fillRect(raquetteX, raquetteY, longueurRaquette, epaisseurRaquette);
 
 }
 
@@ -105,9 +105,22 @@ function ball(){
 
 function boucle(){
     cancelAnimationFrame(frame_requester);
-    updateGame();
-    update_raquette();
-    updateFrame();
+    if(état=="en cours"){
+        updateGame();
+        update_raquette();
+        updateFrame();
+    }
+    
+    
+    /*écrire "Perdu" si c'est perdu */
+    if(perdu){
+        ctx.fillStyle = 'red';
+        ctx.font = 'bold 60px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('Perdu', canvas.width / 2, canvas.height / 2);
+    }
+    
     frame_requester=requestAnimationFrame(boucle);
 }
 
@@ -148,8 +161,12 @@ function updateGame(){
     }
     else if(ball_y+taille_ball>canvas.clientHeight){
         orientation_=180-orientation_
+        perdu=true;
+        état="stop"
         
     }
+
+    
    
 }
 
@@ -159,6 +176,7 @@ function augmenter_vitesse(){
         vitesse+=0.1
     }
 }
+
 
 /*------- fin de Déclaration de fonction -------*/
 
