@@ -1,7 +1,6 @@
 
 /*------- Déclaration de variable -------*/
 
-
 //canvas
 let canvas = document.getElementById('jeu');
 let ctx = canvas.getContext('2d');
@@ -76,7 +75,6 @@ document.getElementById("nouvelle_partie").onclick = function lancer(){
 
     boucle();
 }
-
 
 
 
