@@ -1,3 +1,15 @@
+/*--------- OS -----------*/
+if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+    let bouton_gauche = document.getElementById("gauche")
+    let bouton_droit = document.getElementById("droit")
+    bouton_droit.width=bouton_droit.width*3
+    bouton_droit.height=bouton_droit.height*3
+    bouton_gauche.height=bouton_gauche.height*3
+    bouton_gauche.width=bouton_gauche.width*3
+
+}
+
+
 
 /*------- Déclaration de variable -------*/
 
