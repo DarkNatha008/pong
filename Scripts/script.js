@@ -1,6 +1,6 @@
 /*--------- OS -----------*/
 let isMobile=false;
-if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||true){
     isMobile=true
     let conteneur_des_boutons = document.getElementById("conteneur_des_boutons")
     conteneur_des_boutons.style.transform = "scale(3)"
