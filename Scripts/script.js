@@ -2,10 +2,8 @@
 let isMobile=false;
 if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
     isMobile=true
-    let bouton_gauche = document.getElementById("gauche")
-    let bouton_droit = document.getElementById("droit")
-    bouton_gauche.style.transform = "scale(3)";
-    bouton_droit.style.transform = "scale(3)";
+    let conteneur_des_boutons = document.getElementById("conteneur_des_boutons")
+    conteneur_des_boutons.style.transform = "scale(3)"
 
 }
 
