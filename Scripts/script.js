@@ -1,5 +1,7 @@
 /*--------- OS -----------*/
+let isMobile=false;
 if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+    isMobile=true
     let bouton_gauche = document.getElementById("gauche")
     let bouton_droit = document.getElementById("droit")
     bouton_gauche.style.transform = "scale(3)";
@@ -207,9 +209,6 @@ document.addEventListener("keydown", (e)=>{
             break;
         case "ArrowRight":
             right_down=true
-
-            if(raquetteX +(20/100)*canvas.width < canvas.width) raquetteX += 20;
-
             break;
         default:
             break;
@@ -238,24 +237,41 @@ function update_raquette(){
 }
 
 /* utilise le bouton gauche pour déplacer la raquette */
-
-gauche.addEventListener("mousedown", ()=>{
-    left_down=true
-})
-gauche.addEventListener("mouseup", ()=>{
-    left_down=false
-})
+if(isMobile){
+    gauche.addEventListener("touchstart", ()=>{
+        left_down=true
+    })
+    
+    gauche.addEventListener("touchend", ()=>{
+        left_down=false
+    })
+} else {
+    gauche.addEventListener("mousedown", ()=>{
+        left_down=true
+    })
+    gauche.addEventListener("mouseup", ()=>{
+        left_down=false
+    })
+}
 
 /* utilise le bouton droit pour déplacer la raquette */
 
-
-droit.addEventListener("mousedown", ()=>{
-    right_down=true
-})
-droit.addEventListener("mouseup", ()=>{
-    right_down=false
-})
-
+if(isMobile){
+    droit.addEventListener("touchstart", ()=>{
+        right_down=true
+    })
+    
+    droit.addEventListener("touchend", ()=>{
+        right_down=false
+    })
+} else {
+    droit.addEventListener("mousedown", ()=>{
+        right_down=true
+    })
+    droit.addEventListener("mouseup", ()=>{
+        right_down=false
+    })
+}
 
 
 window.addEventListener('resize', ()=>{
