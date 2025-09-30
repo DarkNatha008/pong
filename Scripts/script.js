@@ -17,7 +17,13 @@ let canvas = document.getElementById('jeu');
 let ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth -400;
-canvas.height = window.innerHeight -300 ;
+if(isMobile){
+    canvas.height = window.innerHeight -500 ;
+
+} else {
+    canvas.height = window.innerHeight -300 ;
+
+}
 
 // raquette
 let gauche = document.getElementById('gauche');
@@ -145,7 +151,11 @@ function updateFrame(){
 
 function updateGame(){
     ball_x=ball_x+Math.sin(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.width/400)
-    ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/300)
+    if(isMobile){
+        ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/500)
+    }else{
+        ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/300)
+    }
     if(ball_x+taille_ball>canvas.clientWidth){
         orientation_=-orientation_
         augmenter_vitesse()
