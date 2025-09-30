@@ -18,7 +18,7 @@ let ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth -400;
 if(isMobile){
-    canvas.height = window.innerHeight -700 ;
+    canvas.height = window.innerHeight -500 ;
 
 } else {
     canvas.height = window.innerHeight -300 ;
@@ -152,7 +152,7 @@ function updateFrame(){
 function updateGame(){
     ball_x=ball_x+Math.sin(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.width/400)
     if(isMobile){
-        ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/700)
+        ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/500)
     }else{
         ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/300)
     }
