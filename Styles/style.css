@@ -2,16 +2,17 @@ body{
     background-color: black;
 }
 h1{
-    color: white;
+    color: rgb(114, 18, 240);
     text-align: center;
 }
-p{
+#phrase{
     color: white;
     text-align: center;
 }
 canvas{
     border: solid;
-    border-color: rgb(114, 116, 236);
+    border-radius: 10px;
+    border-color: rgb(120, 2, 255);
     position: absolute;
     top:0;
     bottom: 0;
@@ -21,22 +22,24 @@ canvas{
 }
 .nouvelle_partie{
   
-    right:0;
-    left: 0;
-    margin:auto;
-    width: 150px;
+    background: linear-gradient(rgb(132, 0, 255), rgb(158, 61, 238));
+    border-radius: 20px;
+    border: none;
+    margin-left:13%;
     
 }
-.score{
+#score{
+    margin-left: 25% ;
+    color: white;
     right:0;
     left: 0;
-    margin:auto;
     
 }
 .bouton_direction{
     right:0;
     left: 0;
-    margin:auto;
+    margin-left:auto;
+    margin-right: auto;
     width: 70px;
 }
 
