@@ -1,6 +1,6 @@
 /*--------- OS -----------*/
 let isMobile=false;
-if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||true){
+if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
     isMobile=true
     let conteneur_des_boutons = document.getElementById("conteneur_des_boutons")
     conteneur_des_boutons.style.transform = "scale(3)"
@@ -18,7 +18,7 @@ let ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth -400;
 if(isMobile){
-    canvas.height = window.innerHeight -500 ;
+    canvas.height = window.innerHeight -700 ;
 
 } else {
     canvas.height = window.innerHeight -300 ;
@@ -152,7 +152,7 @@ function updateFrame(){
 function updateGame(){
     ball_x=ball_x+Math.sin(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.width/400)
     if(isMobile){
-        ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/500)
+        ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/700)
     }else{
         ball_y=ball_y+Math.cos(((Math.PI*2)/360)*orientation_)*(vitesse*canvas.height/300)
     }
