@@ -299,8 +299,8 @@ window.addEventListener('resize', ()=>{
     document.getElementById('Gauche').hidden = false;
   }
  else {
-     //document.getElementById('gauche').hidden = true;
-    // document.getElementById('droit').hidden = true;
+    document.getElementById('gauche').hidden = true;
+    document.getElementById('droit').hidden = true;
   }
 
 
