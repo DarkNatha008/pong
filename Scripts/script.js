@@ -38,8 +38,8 @@ let frame_dernier_rebond_raquette = 30
 //balle
 let orientation_
 
-let vitesse_initiale = 1
-let vitesse_max = vitesse_initiale * 5
+let vitesse_initiale = 2
+let vitesse_max = vitesse_initiale * 10
 let vitesse = vitesse_initiale
 
 
@@ -193,7 +193,7 @@ function updateGame(){
 /* augmentez la vitesse de la balle jusqu'à 5 fois la vitesse initiale */
 function augmenter_vitesse(){
     if(vitesse<vitesse_max){
-        vitesse+=0.1
+        vitesse+=0.2
     }
 }
 
