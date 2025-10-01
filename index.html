@@ -10,7 +10,7 @@
         <body>
             <header>
                 <h1>Solo Pong</h1>
-                <p>Joue le plus longtemps possible !</p>
+                <p id="phrase">Joue le plus longtemps possible !</p>
             </header>
             <main>
                 <canvas id="jeu" height="200" width="600"></canvas>
@@ -18,8 +18,11 @@
                <div class="conteneur" id="conteneur_des_boutons">
                 <button id="nouvelle_partie" class="nouvelle_partie" type="button" value="nouvelle_partie">Nouvelle partie</button>
                 <p id="score">Score: </p>
-                <button id= "gauche" class="bouton_direction" type="button" value="gauche"><----</button>
-                <button id="droit" class="bouton_direction" type="button" value="droit">----></button>
+                <div id="bouton">
+                
+                <input id= "gauche" class="bouton_direction" type="image" src="Images/flecheGauche.svg" value="gauche">
+                <input id="droit" class="bouton_direction" type="image" src="Images/flecheDroite.svg" value="droit"></button>
+                </div>
                </div>
 
             </main>

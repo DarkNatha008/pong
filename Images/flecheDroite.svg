@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="flecheDroite.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.39496497"
+     inkscape:cx="643.09501"
+     inkscape:cy="459.53442"
+     inkscape:window-width="1600"
+     inkscape:window-height="829"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       fill="#000000"
+       stroke="none"
+       d="M 52.059548,119.09823 H 183.15099 v 16.694 l 43.68203,-33.40678 -43.68203,-33.425558 v 16.694 H 52.059548 Z"
+       id="path1"
+       style="opacity:1;stroke-width:0.0206319" />
+    <path
+       fill="#ffffff"
+       stroke="none"
+       d="M 48.863308,116.45047 H 179.95477 v 16.69401 L 223.6368,99.737692 179.95477,66.312132 v 16.694 H 48.863308 Z"
+       id="path2"
+       style="opacity:1;stroke-width:0.0206319" />
+  </g>
+</svg>
